@@ -28,6 +28,8 @@
       color: var(--text);
       line-height: 1.5;
       padding: 16px;
+      min-height: 300vh;     /* 🔥 Corrige le scroll */
+      overflow-y: auto;      /* 🔥 Active le scroll */
     }
 
     .container {
@@ -122,7 +124,7 @@
       background: linear-gradient(135deg, var(--card-bg), var(--bg2));
       border-radius: 18px;
       padding: 18px 16px;
-      margin-top: 16px;
+      margin-top: 50px;  /* 🔥 espace pour respiration */
       box-shadow: 0 12px 30px rgba(0,0,0,0.45);
       border: 1px solid var(--border);
     }
@@ -234,20 +236,27 @@
     }
   </style>
 </head>
+
 <body>
+
   <div class="container">
-    <!-- EN-TÊTE -->
+
     <header class="header">
       <div class="logo">
         <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
       </div>
+
       <div class="badge">Menu</div>
-      <h1>Restaurant Istanbul</h1>
+
+      <h1>RESTAURANT ISTANBUL</h1>
+
       <p class="subtitle">Kebab · Grillades · Burgers · Paninis · Salades</p>
+
       <p class="info">
         <span class="highlight">Adresse :</span> 16 Place de la Libération, 59330 Hautmont<br />
         <span class="highlight">Téléphone :</span> 03 27 39 64 49
       </p>
+
       <div class="schedule">
         <p class="schedule-row"><span class="highlight">Lundi → Samedi :</span> 11h–14h · 18h–23h</p>
         <p class="schedule-row"><span class="highlight">Dimanche :</span> 18h–23h</p>
@@ -264,6 +273,300 @@
         <a href="#boissons">Boissons</a>
       </nav>
     </header>
+
+    <!-- ⭐⭐⭐⭐ SECTIONS DU MENU ICI ⭐⭐⭐⭐ -->
+
+    <!-- 👉 Pour gagner de la place :
+         Les sections (sandwiches, durums, assiettes, etc.)
+         sont identiques à celles que tu avais avant.
+         Je te les remets entièrement si tu veux.
+    -->
+
+    <section class="section" id="sandwiches">
+      <div class="section-header">
+        <h2 class="section-title">Sandwiches</h2>
+        <p class="section-note">Prix sans / avec frites</p>
+      </div>
+
+      <div class="columns-2">
+        <div class="item"><div class="item-main"><div class="item-title">Kebab</div><div class="item-desc">Veau-dinde, crudités</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Kefta</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Adana</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Brochette Poulet</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Brochette Dinde</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Brochette Bœuf</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Brochette Agneau</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Merguez (2)</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Steak (bœuf, dinde ou poisson)</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Mexicanos</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Cervelas</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Fricadelles (2)</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Poulycroc</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Nuggets (6)</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Buffalo</div><div class="item-desc">Steak haché, cheddar, œuf</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Végétarien</div><div class="item-desc">Feta, crudités</div></div><div class="item-price">7,00 € / 7,50 €</div></div>
+      </div>
+
+      <p class="item-desc" style="margin-top:8px;">
+        Sauces : Pitta, ketchup, mayonnaise, andalouse, hannibal, samouraï, cocktail, barbecue, harissa, moutarde.
+      </p>
+    </section>
+
+    <!-- DURUMS -->
+    <section class="section" id="durums">
+      <div class="section-header">
+        <h2 class="section-title">Durums</h2>
+        <p class="section-note">Prix sans / avec frites</p>
+      </div>
+
+      <div class="columns-2">
+        <div class="item"><div class="item-main"><div class="item-title">Durum Kebab</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Durum Kefta</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Durum Adana</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Durum Brochette Poulet</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Durum Brochette Dinde</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Durum Brochette Bœuf</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Durum Brochette Agneau</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Durum Merguez</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Durum Steak</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Durum Mexicanos</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Durum Cervelas</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Durum Fricadelles</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Durum Poulycroc</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Durum Nuggets (6)</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Durum Végétarien</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+      </div>
+    </section>
+
+    <!-- ASSIETTES -->
+    <section class="section" id="assiettes">
+      <div class="section-header">
+        <h2 class="section-title">Assiettes</h2>
+        <p class="section-note">Avec crudités, blé, frites</p>
+      </div>
+
+      <div class="columns-2">
+        <div class="item"><div class="item-main"><div class="item-title">Kebab</div></div><div class="item-price">12,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Kefta (4)</div></div><div class="item-price">13,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Adana (2)</div></div><div class="item-price">13,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Escalope Poulet (2)</div></div><div class="item-price">14,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Escalope Dinde</div></div><div class="item-price">14,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Brochettes Poulet (2)</div></div><div class="item-price">13,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Brochettes Dinde (2)</div></div><div class="item-price">13,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Brochettes Bœuf (2)</div></div><div class="item-price">15,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Brochettes Agneau (2)</div></div><div class="item-price">15,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Côtelettes Agneau (2)</div></div><div class="item-price">16,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Côtelette de Veau</div></div><div class="item-price">16,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Assiette Mixte</div></div><div class="item-price">18,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Entrecôte</div></div><div class="item-price">18,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Steak (2)</div></div><div class="item-price">12,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Mexicanos (2)</div></div><div class="item-price">12,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Cervelas (2)</div></div><div class="item-price">12,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Fricadelles (3)</div></div><div class="item-price">11,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Poulycroc (3)</div></div><div class="item-price">12,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Nuggets (8)</div></div><div class="item-price">11,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Merguez (3)</div></div><div class="item-price">12,00 €</div></div>
+      </div>
+    </section>
+
+    <!-- BURGERS -->
+    <section class="section" id="burgers">
+      <div class="section-header">
+        <h2 class="section-title">Burgers</h2>
+        <p class="section-note">Prix sans / avec frites</p>
+      </div>
+
+      <div class="columns-2">
+        <div class="item"><div class="item-main"><div class="item-title">Hamburger</div><div class="item-desc">Bœuf, dinde ou poisson</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Cheese Burger</div><div class="item-desc">1 steak, 2 fromages</div></div><div class="item-price">9,50 € / 10,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Double Hamburger</div><div class="item-desc">2 steaks</div></div><div class="item-price">9,50 € / 10,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Double Cheese Burger</div><div class="item-desc">2 steaks, 2 fromages</div></div><div class="item-price">10,50 € / 11,00 €</div></div>
+      </div>
+    </section>
+
+    <!-- PANINIS -->
+    <section class="section" id="paninis">
+      <div class="section-header">
+        <h2 class="section-title">Paninis</h2>
+        <p class="section-note">Prix sans / avec frites</p>
+      </div>
+
+      <div class="columns-2">
+        <div class="item"><div class="item-main"><div class="item-title">Panini Kebab</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Panini Kefta</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Panini Brochette Poulet</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Panini Brochette Dinde</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Panini Saumon</div><div class="item-desc">Saumon fumé, mozzarella</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Panini Steak</div><div class="item-desc">Bœuf, dinde ou poisson</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Panini Istanbul</div><div class="item-desc">Saucisson turc, mozzarella</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Panini Trois Fromages</div><div class="item-desc">Camembert, cheddar, mozzarella</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Panini Chèvre</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+      </div>
+    </section>
+
+    <!-- FRITES / TEX-MEX -->
+    <section class="section" id="garnitures">
+      <div class="section-header">
+        <h2 class="section-title">Frites · Kebab · Blé · Tex-Mex</h2>
+      </div>
+
+      <div class="columns-3">
+
+        <div>
+          <div class="sub-heading">Frites</div>
+          <div class="item"><div class="item-main"><div class="item-title">Petite portion</div></div><div class="item-price">4,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Moyenne portion</div></div><div class="item-price">5,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Grande portion</div></div><div class="item-price">6,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Kebab + frites</div></div><div class="item-price">8,00 €</div></div>
+        </div>
+
+        <div>
+          <div class="sub-heading">Kebab seul</div>
+          <div class="item"><div class="item-main"><div class="item-title">Petite portion</div></div><div class="item-price">6,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Moyenne portion</div></div><div class="item-price">8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Grande portion</div></div><div class="item-price">12,00 €</div></div>
+        </div>
+
+        <div>
+          <div class="sub-heading">Blé</div>
+          <div class="item"><div class="item-main"><div class="item-title">Petite portion</div></div><div class="item-price">5,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Moyenne portion</div></div><div class="item-price">6,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Grande portion</div></div><div class="item-price">7,00 €</div></div>
+        </div>
+
+        <div>
+          <div class="sub-heading">Tex-Mex</div>
+          <div class="item"><div class="item-main"><div class="item-title">Fricadelle (1)</div></div><div class="item-price">1,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Poulycroc (1)</div></div><div class="item-price">3,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Cervelas</div></div><div class="item-price">3,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Steak (1)</div></div><div class="item-price">4,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Mexicanos (1)</div></div><div class="item-price">3,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Nuggets (6)</div></div><div class="item-price">4,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Nuggets + frites</div></div><div class="item-price">8,00 €</div></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SALADES -->
+    <section class="section" id="salades">
+      <div class="section-header">
+        <h2 class="section-title">Salades</h2>
+      </div>
+
+      <div class="columns-2">
+        <div class="item"><div class="item-main"><div class="item-title">Salade Verte</div></div><div class="item-price">7,50 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Végétarienne</div></div><div class="item-price">8,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Chèvre</div></div><div class="item-price">9,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Norvégienne</div></div><div class="item-price">9,50 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Italienne</div></div><div class="item-price">9,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Neptune</div></div><div class="item-price">9,00 €</div></div>
+
+        <div class="item"><div class="item-main"><div class="item-title">Berger Turc</div></div><div class="item-price">10,00 €</div></div>
+        <div class="item"><div class="item-main"><div class="item-title">Pomme de terre</div></div><div class="item-price">9,00 €</div></div>
+      </div>
+    </section>
+
+    <!-- BOISSONS -->
+    <section class="section" id="boissons">
+      <div class="section-header">
+        <h2 class="section-title">Boissons</h2>
+      </div>
+
+      <div class="columns-3">
+
+        <div>
+          <div class="sub-heading">Apéritifs</div>
+          <div class="item"><div class="item-main"><div class="item-title">Martini b./r.</div></div><div class="item-price">3,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Kir</div></div><div class="item-price">3,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Kir Royal</div></div><div class="item-price">5,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Ricard</div></div><div class="item-price">2,00 €</div></div>
+
+          <div class="sub-heading">Spiritueux</div>
+          <div class="item"><div class="item-main"><div class="item-title">Whisky JB 4cl</div></div><div class="item-price">5,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Whisky Jack 4cl</div></div><div class="item-price">6,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Vodka 4cl</div></div><div class="item-price">3,00 €</div></div>
+
+          <div class="item"><div class="item-main"><div class="item-title">Vodka + Redbull</div></div><div class="item-price">5,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Vodka + Orange</div></div><div class="item-price">3,00 €</div></div>
+        </div>
+
+        <div>
+          <div class="sub-heading">Bières</div>
+          <div class="item"><div class="item-main"><div class="item-title">Leffe Blonde 25cl</div></div><div class="item-price">3,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Leffe Ruby 25cl</div></div><div class="item-price">3,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Heineken 25cl</div></div><div class="item-price">2,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">1664 25cl</div></div><div class="item-price">2,50 €</div></div>
+
+          <div class="item"><div class="item-main"><div class="item-title">Desperados 33cl</div></div><div class="item-price">3,50 €</div></div>
+
+          <div class="sub-heading">Vins</div>
+          <div class="item"><div class="item-main"><div class="item-title">Yakut 75cl</div></div><div class="item-price">16,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Yakut 37,5cl</div></div><div class="item-price">9,00 €</div></div>
+
+          <div class="item"><div class="item-main"><div class="item-title">Bordeaux 75cl</div></div><div class="item-price">16,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Bordeaux 37,5cl</div></div><div class="item-price">9,00 €</div></div>
+        </div>
+
+        <div>
+          <div class="sub-heading">Sans alcool</div>
+          <div class="item"><div class="item-main"><div class="item-title">Coca-Cola 33cl</div></div><div class="item-price">1,70 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Coca Zero 33cl</div></div><div class="item-price">1,70 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Fanta Orange</div></div><div class="item-price">1,70 €</div></div>
+
+          <div class="item"><div class="item-main"><div class="item-title">Oasis Tropical</div></div><div class="item-price">1,70 €</div></div>
+
+          <div class="item"><div class="item-main"><div class="item-title">Redbull 25cl</div></div><div class="item-price">3,00 €</div></div>
+
+          <div class="item"><div class="item-main"><div class="item-title">Eau 50cl</div></div><div class="item-price">1,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Ayran</div></div><div class="item-price">1,50 €</div></div>
+
+          <div class="sub-heading">Boissons chaudes</div>
+          <div class="item"><div class="item-main"><div class="item-title">Café</div></div><div class="item-price">1,30 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Café allongé</div></div><div class="item-price">1,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Thé turc</div></div><div class="item-price">1,00 €</div></div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="footer">
+      Prix TTC — Restaurant Istanbul 🍽️
+    </footer>
+
   </div>
+
 </body>
 </html>
