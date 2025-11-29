@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Restaurant Istanbul - Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #1b0003;
+      --bg2: #2b0407;
+      --card-bg: #2f0508;
+      --accent: #ffb62a;
+      --accent-soft: #ff6a3c;
+      --text: #fdf5f2;
+      --muted: #c9a9a2;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #3b0509 0, #1b0003 55%, #100002 100%);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 16px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto 48px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      margin-bottom: 8px;
+    }
+
+    .logo img {
+      max-width: 180px;
+      height: auto;
+      border-radius: 999px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .schedule {
+      margin-top: 6px;
+    }
+
+    .schedule-row {
+      font-size: 12px;
+    }
+
+    nav {
+      margin: 18px 0 4px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    nav a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      color: var(--muted);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+    }
+
+    nav a:hover {
+      border-color: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .section {
+      background: linear-gradient(135deg, var(--card-bg), var(--bg2));
+      border-radius: 18px;
+      padding: 18px 16px;
+      margin-top: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+      border: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+    }
+
+    .section-note {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-top: 1px dashed var(--border);
+    }
+
+    .item:first-of-type {
+      border-top: none;
+    }
+
+    .item-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .item-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .item-desc {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .item-price {
+      font-weight: 600;
+      white-space: nowrap;
+      font-size: 13px;
+      margin-left: 8px;
+      text-align: right;
+    }
+
+    .pill-note {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .columns-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 8px 22px;
+    }
+
+    .columns-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 8px 18px;
+    }
+
+    .sub-heading {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
+      margin-top: 4px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 22px;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 32px 16px;
+      }
+      h1 {
+        font-size: 32px;
+      }
+      .section {
+        padding: 20px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- EN-TÊTE -->
+    <header class="header">
+      <div class="logo">
+        <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
+      </div>
+      <div class="badge">Menu</div>
+      <h1>Restaurant Istanbul</h1>
+      <p class="subtitle">Kebab · Grillades · Burgers · Paninis · Salades</p>
+      <p class="info">
+        <span class="highlight">Adresse :</span> 16 Place de la Libération, 59330 Hautmont<br />
+        <span class="highlight">Téléphone :</span> 03 27 39 64 49
+      </p>
+      <div class="schedule">
+        <p class="schedule-row"><span class="highlight">Lundi → Samedi :</span> 11h–14h · 18h–23h</p>
+        <p class="schedule-row"><span class="highlight">Dimanche :</span> 18h–23h</p>
+      </div>
+
+      <nav>
+        <a href="#sandwiches">Sandwiches</a>
+        <a href="#durums">Durums</a>
+        <a href="#assiettes">Assiettes</a>
+        <a href="#burgers">Burgers</a>
+        <a href="#paninis">Paninis</a>
+        <a href="#garnitures">Frites &amp; Tex-Mex</a>
+        <a href="#salades">Salades</a>
+        <a href="#boissons">Boissons</a>
+      </nav>
+    </header>
+  </div>
+</body>
+</html>
