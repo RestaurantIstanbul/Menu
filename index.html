@@ -46,6 +46,18 @@
     .header {
       text-align: center;
       margin-bottom: 24px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    /* Barre lumineuse sous le titre principal */
+    .header::after {
+      content: "";
+      display: block;
+      width: 140px;
+      height: 2px;
+      margin: 12px auto 0;
+      background: linear-gradient(90deg, transparent, #ffb62a, transparent);
     }
 
     .logo {
@@ -135,6 +147,14 @@
       margin-top: 50px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.45);
       border: 1px solid var(--border);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    /* Effet lumineux au survol des sections */
+    .section:hover {
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      border-color: rgba(255, 182, 42, 0.45);
+      transform: translateY(-2px);
     }
 
     .section-header {
@@ -152,6 +172,27 @@
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-weight: 600;
+      position: relative;
+      padding: 0 18px;
+    }
+
+    /* Traits déco autour des titres de section */
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 28px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .section-title::before {
+      left: -2px;
+    }
+
+    .section-title::after {
+      right: -2px;
     }
 
     .section-note {
@@ -223,6 +264,7 @@
       color: var(--muted);
       margin-top: 10px;
       font-style: italic;
+      text-align: center;
     }
 
     .footer {
@@ -374,7 +416,7 @@
       </div>
 
       <p class="sauce-note">
-        Sauces au choix : Pitta, ketchup, mayonnaise, andalouse, hannibal, samouraï, cocktail, barbecue, harissa, moutarde.
+        Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
       </p>
     </section>
 
@@ -465,7 +507,7 @@
       </div>
 
       <p class="sauce-note">
-        Sauces au choix : Pitta, ketchup, mayonnaise, andalouse, hannibal, samouraï, cocktail, barbecue, harissa, moutarde.
+        Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
       </p>
     </section>
 
@@ -581,7 +623,7 @@
       </div>
 
       <p class="sauce-note">
-        Sauces au choix : Pitta, ketchup, mayonnaise, andalouse, hannibal, samouraï, cocktail, barbecue, harissa, moutarde.
+        Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
       </p>
     </section>
 
@@ -615,7 +657,7 @@
       </div>
 
       <p class="sauce-note">
-        Sauces au choix : Pitta, ketchup, mayonnaise, andalouse, hannibal, samouraï, cocktail, barbecue, harissa, moutarde.
+        Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
       </p>
     </section>
 
@@ -674,7 +716,7 @@
       </div>
 
       <p class="sauce-note">
-        Sauces au choix : Pitta, ketchup, mayonnaise, andalouse, hannibal, samouraï, cocktail, barbecue, harissa, moutarde.
+        Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
       </p>
     </section>
 
@@ -722,7 +764,7 @@
       </div>
 
       <p class="sauce-note">
-        Sauces au choix : Pitta, ketchup, mayonnaise, andalouse, hannibal, samouraï, cocktail, barbecue, harissa, moutarde.
+        Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
       </p>
     </section>
 
