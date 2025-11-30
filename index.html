@@ -289,6 +289,34 @@
 
       <p class="subtitle">Kebab · Grillades · Burgers · Paninis · Salades</p>
 
+<p class="welcome-line">
+  Bienvenue au Restaurant Istanbul — votre adresse 100% halal pour déguster kebabs,
+  grillades et spécialités turques préparées avec passion.
+</p>
+
+    .welcome-line {
+  font-family: "El Messiri", system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--accent);
+  text-align: center;
+  margin: 8px auto 16px;
+  max-width: 650px;
+  line-height: 1.5;
+  font-style: italic;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+/* Petite ligne dorée élégante */
+.welcome-line::after {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 6px auto 0;
+}
+      
       <p class="info">
         <span class="highlight">Adresse :</span> 16 Place de la Libération, 59330 Hautmont<br />
         <span class="highlight">Téléphone :</span> 03 27 39 64 49
