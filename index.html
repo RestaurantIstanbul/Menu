@@ -166,34 +166,21 @@
       flex-wrap: wrap;
     }
 
-    .section-title {
-      font-family: "El Messiri", system-ui, sans-serif;
-      font-size: 17px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-weight: 600;
-      position: relative;
-      padding: 0 18px;
-    }
+.section-title {
+  font-family: "El Messiri", system-ui, sans-serif;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  position: relative;
+  padding: 0;
+}
 
-    /* Traits déco autour des titres de section */
-    .section-title::before,
-    .section-title::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 28px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.35);
-    }
-
-    .section-title::before {
-      left: -2px;
-    }
-
-    .section-title::after {
-      right: -2px;
-    }
+/* Suppression totale des décorations sous/à côté des titres */
+.section-title::before,
+.section-title::after {
+  content: none !important;
+}
 
     .section-note {
       font-size: 11px;
