@@ -23,7 +23,6 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -227,7 +226,7 @@
       position: relative;
     }
 
-    /* Pas de déco autour des titres (comme tu veux) */
+    /* Pas de déco autour des titres */
     .section-title::before,
     .section-title::after { content: none !important; }
 
@@ -250,7 +249,6 @@
     .item:first-of-type { border-top: none; }
 
     .item-main { flex: 1; min-width: 0; }
-
     .item-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
     .item-desc  { font-size: 12px; color: var(--muted); }
     .item-price { font-weight: 600; white-space: nowrap; font-size: 13px; margin-left: 8px; text-align: right; }
@@ -299,7 +297,6 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Reprend ton style nav pour les catégories */
     .menu-cats{
       margin: 0;
       display: flex;
@@ -340,7 +337,7 @@
       text-align: center;
     }
 
-    /* ===== Location / About ===== */
+    /* ===== Location / About / Reservation ===== */
     .location-grid{
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -401,6 +398,47 @@
     }
 
     .about-text strong{ color: var(--text); }
+
+    /* Reservation helpers */
+    .reservation-text{
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .reservation-meta{
+      margin-top: 12px;
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .meta-row{
+      display:flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(0,0,0,0.16);
+    }
+
+    .meta-label{
+      font-family: "El Messiri", system-ui, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .meta-value{
+      color: var(--muted);
+      font-size: 13px;
+      text-align: right;
+    }
 
     /* ===== Gallery (7 photos, swipe horizontal) ===== */
     .gallery-wrap{
@@ -470,7 +508,6 @@
       h1 { font-size: 32px; }
       .section { padding: 20px 22px; }
       .gallery-card img{ height: 240px; }
-      } 
     }
   </style>
 </head>
@@ -512,6 +549,7 @@
         <div class="home-actions">
           <a class="home-btn" href="#menu" data-page="menu">Menu</a>
           <a class="home-btn" href="#location" data-page="location">Localisation</a>
+          <a class="home-btn" href="#reservation" data-page="reservation">Réservation</a>
           <a class="home-btn" href="#about" data-page="about">À propos</a>
         </div>
       </header>
@@ -526,34 +564,34 @@
         <div class="gallery-wrap">
           <div class="gallery-title">Galerie</div>
 
-          <!-- Remplace photo1.jpg ... photo7.jpg par tes vrais fichiers -->
+          <!-- Utilise tes vrais fichiers : foto1.png ... foto7.png -->
           <div class="gallery" aria-label="Galerie de photos">
             <div class="gallery-card">
-              <img src="foto1.jpg" alt="Photo 1">
+              <img src="foto1.png" alt="Photo 1" loading="lazy">
               <div class="gallery-cap">Brochettes grillées sur charbon ardent</div>
             </div>
             <div class="gallery-card">
-              <img src="foto2.jpg" alt="Photo 2">
+              <img src="foto2.png" alt="Photo 2" loading="lazy">
               <div class="gallery-cap">Brochettes grillées sur charbon ardent</div>
             </div>
             <div class="gallery-card">
-              <img src="foto3.jpg" alt="Photo 3">
+              <img src="foto3.png" alt="Photo 3" loading="lazy">
               <div class="gallery-cap">Assiette döner kebab avec pilav de blé</div>
             </div>
             <div class="gallery-card">
-              <img src="foto4.jpg" alt="Photo 4">
+              <img src="foto4.png" alt="Photo 4" loading="lazy">
               <div class="gallery-cap">Salade grecque fraîche et savoureuse</div>
             </div>
             <div class="gallery-card">
-              <img src="foto5.jpg" alt="Photo 5">
+              <img src="foto5.png" alt="Photo 5" loading="lazy">
               <div class="gallery-cap">Assiette de merguez et frites dorées</div>
             </div>
             <div class="gallery-card">
-              <img src="foto6.jpg" alt="Photo 6">
+              <img src="foto6.png" alt="Photo 6" loading="lazy">
               <div class="gallery-cap">Sandwich köfte et frites dorées</div>
             </div>
             <div class="gallery-card">
-              <img src="foto7.jpg" alt="Photo 7">
+              <img src="foto7.png" alt="Photo 7" loading="lazy">
               <div class="gallery-cap">Nos boissons traditionnelles internationales</div>
             </div>
           </div>
@@ -817,7 +855,6 @@
         </div>
 
         <div class="columns-3">
-
           <div>
             <div class="sub-heading">Apéritifs</div>
             <div class="item"><div class="item-main"><div class="item-title">Martini (blanc ou rouge)</div></div><div class="item-price">3,00 €</div></div>
@@ -889,7 +926,6 @@
             <div class="item"><div class="item-main"><div class="item-title">Café au lait</div></div><div class="item-price">1,70 €</div></div>
             <div class="item"><div class="item-main"><div class="item-title">Thé turc</div></div><div class="item-price">1,00 €</div></div>
           </div>
-
         </div>
       </section>
 
@@ -901,7 +937,7 @@
     </div>
 
     <!-- =========================
-         PAGE LOCATION
+         PAGE LOCATION (téléphone + horaires supprimés)
     ========================== -->
     <div class="page" id="page-location">
       <header class="header">
@@ -911,11 +947,6 @@
         <div class="badge">Accès</div>
         <h1>LOCALISATION</h1>
         <p class="subtitle">Trouvez-nous facilement</p>
-
-        <p class="info">
-          <span class="highlight">Téléphone :</span>
-          <a class="phone-link" href="tel:+33327396449">03 27 39 64 49</a>
-        </p>
       </header>
 
       <section class="section">
@@ -931,19 +962,10 @@
               59330 Hautmont
             </div>
 
-            <!-- Remplace le lien Google Maps si tu veux -->
             <a class="btn primary" target="_blank" rel="noopener"
                href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Istanbul%2016%20Place%20de%20la%20Lib%C3%A9ration%2059330%20Hautmont">
               Ouvrir sur Maps
             </a>
-          </div>
-
-          <div class="location-card">
-            <div class="location-title">Horaires</div>
-            <div class="location-text">
-              Lundi → Samedi : 11h–14h · 18h–23h<br>
-              Dimanche : 18h–23h
-            </div>
           </div>
         </div>
       </section>
@@ -953,6 +975,57 @@
       </div>
 
       <footer class="footer">Restaurant Istanbul - Hautmont</footer>
+    </div>
+
+    <!-- =========================
+         PAGE RÉSERVATION (horaires déplacés ici)
+    ========================== -->
+    <div class="page" id="page-reservation">
+      <header class="header">
+        <div class="logo">
+          <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
+        </div>
+        <div class="badge">Réserver</div>
+        <h1>RÉSERVATION</h1>
+        <p class="subtitle">Groupes · Familles · Repas d’affaires</p>
+      </header>
+
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Réserver par téléphone</h2>
+        </div>
+
+        <p class="reservation-text">
+          Pour toute réservation, merci de <strong>nous contacter par téléphone</strong> et de nous informer,
+          <strong>avant le début du service</strong>, du <strong>nombre de personnes</strong> ainsi que de
+          <strong>l’heure souhaitée</strong>.
+        </p>
+
+        <div class="reservation-meta" aria-label="Informations de service">
+          <div class="meta-row">
+            <div class="meta-label">Horaires</div>
+            <div class="meta-value">Lundi → Samedi : 11h–14h · 18h–23h</div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-label">Dimanche</div>
+            <div class="meta-value">18h–23h</div>
+          </div>
+          <div class="meta-row">
+            <div class="meta-label">À emporter</div>
+            <div class="meta-value">7/7 jusqu’à 23h (to go)</div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:12px;">
+          <a class="btn primary" href="tel:+33327396449">Appeler maintenant</a>
+        </div>
+      </section>
+
+      <div class="back-row">
+        <button class="back-btn" type="button" data-back="home">Retour à l’accueil</button>
+      </div>
+
+      <footer class="footer">Merci et à très bientôt</footer>
     </div>
 
     <!-- =========================
@@ -974,27 +1047,27 @@
         </div>
 
         <p class="about-text">
-          Fondé en 2013, notre restaurant est une <strong>entreprise familiale</strong> qui place l’hospitalité 
+          Fondé en 2013, notre restaurant est une <strong>entreprise familiale</strong> qui place l’hospitalité
           et la qualité au cœur de son identité. Ouvert initialement à une adresse voisine sous le même nom,
-          l’établissement a franchi une nouvelle étape en 2017 avec l’acquisition et le déménagement dans son 
+          l’établissement a franchi une nouvelle étape en 2017 avec l’acquisition et le déménagement dans son
           local actuel.
         </p>
 
         <p class="about-text" style="margin-top:10px;">
-          Notre principale distinction réside dans notre <strong>large sélection de grillades</strong>, préparées 
-          avec soin à partir de <strong>viandes halal de haute qualité importées d’Allemagne</strong>. Cette exigence 
+          Notre principale distinction réside dans notre <strong>large sélection de grillades</strong>, préparées
+          avec soin à partir de <strong>viandes halal de haute qualité importées d’Allemagne</strong>. Cette exigence
           nous permet de garantir à nos clients des saveurs authentiques et une constance irréprochable.
         </p>
 
         <p class="about-text" style="margin-top:10px;">
-          Souhaitant également satisfaire les palais les plus exigeants, nous proposons une sélection de 
-          <strong>vins turcs de marque</strong>, notamment <em>Senfoni</em> et <em>Mirina</em>, ainsi que le 
+          Souhaitant également satisfaire les palais les plus exigeants, nous proposons une sélection de
+          <strong>vins turcs de marque</strong>, notamment <em>Senfoni</em> et <em>Mirina</em>, ainsi que le
           <strong>rakı</strong>, notre boisson traditionnelle.
         </p>
 
         <p class="about-text" style="margin-top:10px;">
-          Nous accueillons avec plaisir les <strong>groupes professionnels</strong> et les <strong>grandes familles</strong>, 
-          avec possibilité de réservation adaptée à leurs besoins. Bien que nous ne proposions pas de livraison à domicile, 
+          Nous accueillons avec plaisir les <strong>groupes professionnels</strong> et les <strong>grandes familles</strong>,
+          avec possibilité de réservation adaptée à leurs besoins. Bien que nous ne proposions pas de livraison à domicile,
           nous préparons des <strong>commandes à emporter (to go)</strong> tous les jours de la semaine, jusqu’à <strong>23h</strong>.
         </p>
       </section>
@@ -1014,6 +1087,7 @@
       home: document.getElementById("page-home"),
       menu: document.getElementById("page-menu"),
       location: document.getElementById("page-location"),
+      reservation: document.getElementById("page-reservation"),
       about: document.getElementById("page-about"),
     };
 
