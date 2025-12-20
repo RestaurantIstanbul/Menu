@@ -39,11 +39,11 @@
       margin: 0 auto 48px;
     }
 
-    /* ===== Pages (Bona Me style) ===== */
+    /* ===== Pages ===== */
     .page { display: none; }
     .page.is-active { display: block; }
 
-    /* Header global (logo + titre) */
+    /* Header global */
     .header {
       text-align: center;
       margin-bottom: 18px;
@@ -93,9 +93,6 @@
     .info { font-size: 13px; color: var(--muted); }
     .highlight { color: var(--accent); font-weight: 600; }
 
-    .schedule { margin-top: 8px; }
-    .schedule-row { font-size: 12px; color: var(--muted); }
-
     .welcome-line {
       font-family: "El Messiri", system-ui, sans-serif;
       font-size: 16px;
@@ -115,11 +112,11 @@
 
     /* ===== Buttons (home + generic) ===== */
     .home-actions{
-      margin-top: 16px;
+      margin-top: 18px;
       display: grid;
       gap: 10px;
-      grid-template-columns: 1fr;
-      max-width: 520px;
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* yan yana (2x2) */
+      max-width: 720px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -135,7 +132,7 @@
       font-family: "El Messiri", system-ui, sans-serif;
       letter-spacing: .10em;
       text-transform: uppercase;
-      font-size: 13px;
+      font-size: 12px;
       transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
       cursor: pointer;
       user-select: none;
@@ -226,7 +223,6 @@
       position: relative;
     }
 
-    /* Pas de déco autour des titres */
     .section-title::before,
     .section-title::after { content: none !important; }
 
@@ -440,7 +436,7 @@
       text-align: right;
     }
 
-    /* ===== Gallery (7 photos, swipe horizontal) ===== */
+    /* ===== Gallery ===== */
     .gallery-wrap{
       margin-top: 12px;
       border: 1px solid var(--border);
@@ -508,6 +504,7 @@
       h1 { font-size: 32px; }
       .section { padding: 20px 22px; }
       .gallery-card img{ height: 240px; }
+      .home-btn{ font-size: 13px; }
     }
   </style>
 </head>
@@ -517,6 +514,8 @@
 
     <!-- =========================
          PAGE HOME
+         (Téléphone/Adresse/Horaires supprimés)
+         (Boutons en 2 colonnes)
     ========================== -->
     <div class="page is-active" id="page-home">
 
@@ -535,21 +534,10 @@
           grillades et spécialités turques préparées avec passion.
         </p>
 
-        <p class="info">
-          <span class="highlight">Téléphone :</span>
-          <a class="phone-link" href="tel:+33327396449">03 27 39 64 49</a><br />
-          <span class="highlight">Adresse :</span> 16 Place de la Libération, 59330 Hautmont
-        </p>
-
-        <div class="schedule">
-          <p class="schedule-row"><span class="highlight">Lundi → Samedi :</span> 11h–14h · 18h–23h</p>
-          <p class="schedule-row"><span class="highlight">Dimanche :</span> 18h–23h</p>
-        </div>
-
         <div class="home-actions">
           <a class="home-btn" href="#menu" data-page="menu">Menu</a>
           <a class="home-btn" href="#location" data-page="location">Localisation</a>
-          <a class="home-btn" href="#reservation" data-page="reservation">Réservation</a>
+          <a class="home-btn" href="#reservation" data-page="reservation">Réserver / Commander à emporter</a>
           <a class="home-btn" href="#about" data-page="about">À propos</a>
         </div>
       </header>
@@ -564,34 +552,33 @@
         <div class="gallery-wrap">
           <div class="gallery-title">Galerie</div>
 
-          <!-- Utilise tes vrais fichiers : foto1.png ... foto7.png -->
           <div class="gallery" aria-label="Galerie de photos">
             <div class="gallery-card">
-              <img src="foto1.jpg" alt="Photo 1" loading="lazy">
+              <img src="foto1.png" alt="Photo 1" loading="lazy">
               <div class="gallery-cap">Brochettes grillées sur charbon ardent</div>
             </div>
             <div class="gallery-card">
-              <img src="foto2.jpg" alt="Photo 2" loading="lazy">
+              <img src="foto2.png" alt="Photo 2" loading="lazy">
               <div class="gallery-cap">Brochettes grillées sur charbon ardent</div>
             </div>
             <div class="gallery-card">
-              <img src="foto3.jpg" alt="Photo 3" loading="lazy">
+              <img src="foto3.png" alt="Photo 3" loading="lazy">
               <div class="gallery-cap">Assiette döner kebab avec pilav de blé</div>
             </div>
             <div class="gallery-card">
-              <img src="foto4.jpg" alt="Photo 4" loading="lazy">
+              <img src="foto4.png" alt="Photo 4" loading="lazy">
               <div class="gallery-cap">Salade grecque fraîche et savoureuse</div>
             </div>
             <div class="gallery-card">
-              <img src="foto5.jpg" alt="Photo 5" loading="lazy">
+              <img src="foto5.png" alt="Photo 5" loading="lazy">
               <div class="gallery-cap">Assiette de merguez et frites dorées</div>
             </div>
             <div class="gallery-card">
-              <img src="foto6.jpg" alt="Photo 6" loading="lazy">
+              <img src="foto6.png" alt="Photo 6" loading="lazy">
               <div class="gallery-cap">Sandwich köfte et frites dorées</div>
             </div>
             <div class="gallery-card">
-              <img src="foto7.jpg" alt="Photo 7" loading="lazy">
+              <img src="foto7.png" alt="Photo 7" loading="lazy">
               <div class="gallery-cap">Nos boissons traditionnelles internationales</div>
             </div>
           </div>
@@ -623,9 +610,11 @@
           <span class="highlight">Adresse :</span> 16 Place de la Libération, 59330 Hautmont
         </p>
 
-        <div class="schedule">
-          <p class="schedule-row"><span class="highlight">Lundi → Samedi :</span> 11h–14h · 18h–23h</p>
-          <p class="schedule-row"><span class="highlight">Dimanche :</span> 18h–23h</p>
+        <div class="schedule" style="margin-top:10px;">
+          <p class="info" style="font-size:12px; color: var(--muted);">
+            Pour les horaires et la réservation : consultez la page
+            <span class="highlight">Réserver / Commander à emporter</span>.
+          </p>
         </div>
       </header>
 
@@ -937,7 +926,8 @@
     </div>
 
     <!-- =========================
-         PAGE LOCATION (téléphone + horaires supprimés)
+         PAGE LOCATION
+         (Téléphone + Horaires supprimés)
     ========================== -->
     <div class="page" id="page-location">
       <header class="header">
@@ -963,7 +953,7 @@
             </div>
 
             <a class="btn primary" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Istanbul%2016%20Place%20de%20la%20Lib%C3%A9ration%2059330%20Hautmont">
+              href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Istanbul%2016%20Place%20de%20la%20Lib%C3%A9ration%2059330%20Hautmont">
               Ouvrir sur Maps
             </a>
           </div>
@@ -978,15 +968,16 @@
     </div>
 
     <!-- =========================
-         PAGE RÉSERVATION (horaires déplacés ici)
+         PAGE RÉSERVER / COMMANDER À EMPORTER
+         (Horaires ici)
     ========================== -->
     <div class="page" id="page-reservation">
       <header class="header">
         <div class="logo">
           <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
         </div>
-        <div class="badge">Réserver</div>
-        <h1>RÉSERVATION</h1>
+        <div class="badge">Service</div>
+        <h1>RÉSERVER / COMMANDER À EMPORTER</h1>
         <p class="subtitle">Groupes · Familles · Repas d’affaires</p>
       </header>
 
@@ -1082,7 +1073,6 @@
   </div>
 
   <script>
-    // Pages
     const pages = {
       home: document.getElementById("page-home"),
       menu: document.getElementById("page-menu"),
@@ -1097,7 +1087,7 @@
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
 
-    // Home buttons / any element with data-page
+    // Navigation pages (data-page)
     document.addEventListener("click", (e) => {
       const el = e.target.closest("[data-page]");
       if (!el) return;
@@ -1106,7 +1096,7 @@
       showPage(page);
     });
 
-    // Back buttons
+    // Back buttons (data-back)
     document.addEventListener("click", (e) => {
       const el = e.target.closest("[data-back]");
       if (!el) return;
@@ -1120,10 +1110,7 @@
       const a = e.target.closest('a[href^="#"]');
       if (!a) return;
 
-      // Only when menu page active
       if (!pages.menu.classList.contains("is-active")) return;
-
-      // If it's the "Retour à l’accueil" link (data-back), let the back-handler do its job
       if (a.closest("[data-back]")) return;
 
       const id = a.getAttribute("href");
