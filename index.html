@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Restaurant Istanbul - Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Police style oriental -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #1b0003;
+      --bg2: #2b0407;
+      --card-bg: #2f0508;
+      --accent: #ffb62a;
+      --accent-soft: #ff6a3c;
+      --text: #fdf5f2;
+      --muted: #c9a9a2;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #3b0509 0, #1b0003 55%, #100002 100%);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto 48px;
+    }
+
+    /* ===== Pages (Bona Me style) ===== */
+    .page { display: none; }
+    .page.is-active { display: block; }
+
+    /* Header global (logo + titre) */
+    .header {
+      text-align: center;
+      margin-bottom: 18px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .header::after {
+      content: "";
+      display: block;
+      width: 140px;
+      height: 2px;
+      margin: 12px auto 0;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .logo { margin-bottom: 8px; }
+    .logo img { max-width: 180px; height: auto; border-radius: 999px; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+
+    h1 {
+      font-family: "El Messiri", system-ui, sans-serif;
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .info { font-size: 13px; color: var(--muted); }
+    .highlight { color: var(--accent); font-weight: 600; }
+
+    .schedule { margin-top: 8px; }
+    .schedule-row { font-size: 12px; color: var(--muted); }
+
+    .welcome-line {
+      font-family: "El Messiri", system-ui, sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      text-align: center;
+      margin: 12px auto 10px;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .phone-link, .phone-link:visited {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .phone-link:active { opacity: 0.85; text-decoration: underline; }
+
+    /* ===== Buttons (home + generic) ===== */
+    .home-actions{
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .home-btn{
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.18);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 16px;
+      text-decoration: none;
+      text-align: center;
+      font-family: "El Messiri", system-ui, sans-serif;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 13px;
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .home-btn:hover{
+      border-color: rgba(255,182,42,0.45);
+      box-shadow: 0 10px 26px rgba(0,0,0,.45);
+    }
+
+    .home-btn:active{
+      transform: translateY(1px);
+      border-color: rgba(255,182,42,0.65);
+      box-shadow: 0 14px 30px rgba(0,0,0,.55);
+    }
+
+    .back-row{
+      display:flex;
+      justify-content:center;
+      margin-top: 14px;
+    }
+
+    .back-btn{
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-family: "El Messiri", system-ui, sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: 11px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .back-btn:hover{
+      color: var(--accent);
+      border-color: rgba(255,182,42,0.45);
+    }
+
+    .back-btn:active{
+      transform: translateY(1px);
+      border-color: rgba(255,182,42,0.65);
+    }
+
+    /* ===== Sections cards ===== */
+    .section {
+      background: linear-gradient(135deg, var(--card-bg), var(--bg2));
+      border-radius: 18px;
+      padding: 18px 16px;
+      margin-top: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .section:hover {
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      border-color: rgba(255, 182, 42, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .section:active {
+      box-shadow: 0 20px 45px rgba(255, 182, 42, 0.25);
+      border-color: rgba(255, 182, 42, 0.65);
+      transform: scale(0.995);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-family: "El Messiri", system-ui, sans-serif;
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+      padding: 0;
+      position: relative;
+    }
+
+    /* Pas de déco autour des titres (comme tu veux) */
+    .section-title::before,
+    .section-title::after { content: none !important; }
+
+    .section-note {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ===== Menu items ===== */
+    .item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-top: 1px dashed var(--border);
+    }
+
+    .item:first-of-type { border-top: none; }
+
+    .item-main { flex: 1; min-width: 0; }
+
+    .item-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+    .item-desc  { font-size: 12px; color: var(--muted); }
+    .item-price { font-weight: 600; white-space: nowrap; font-size: 13px; margin-left: 8px; text-align: right; }
+
+    .columns-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 8px 22px;
+    }
+
+    .columns-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 8px 18px;
+    }
+
+    .sub-heading {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
+      margin-top: 4px;
+      font-family: "El Messiri", system-ui, sans-serif;
+    }
+
+    .sauce-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 10px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ===== Menu sticky categories ===== */
+    .menu-sticky{
+      position: sticky;
+      top: 10px;
+      z-index: 50;
+      margin: 10px 0 0;
+      padding: 10px 10px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(27, 0, 3, 0.70);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Reprend ton style nav pour les catégories */
+    .menu-cats{
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .menu-cats a{
+      font-family: "El Messiri", system-ui, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      text-decoration: none;
+      color: var(--muted);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .menu-cats a:hover{
+      border-color: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .menu-cats a:active{
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 10px rgba(255,182,42,0.35);
+    }
+
+    .menu-sticky-hint{
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ===== Location / About ===== */
+    .location-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .location-card{
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(0,0,0,0.18);
+      text-align: center;
+    }
+
+    .location-title{
+      font-family: "El Messiri", system-ui, sans-serif;
+      color: var(--accent);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .location-text{
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      text-decoration:none;
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-family: "El Messiri", system-ui, sans-serif;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn.primary{
+      color: #1b0003;
+      background: var(--accent);
+      border-color: rgba(255,182,42,0.55);
+    }
+
+    .btn.primary:active{ transform: translateY(1px); }
+
+    .about-text{
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .about-text strong{ color: var(--text); }
+
+    /* ===== Gallery (7 photos, swipe horizontal) ===== */
+    .gallery-wrap{
+      margin-top: 12px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(0,0,0,0.14);
+      padding: 12px;
+    }
+
+    .gallery-title{
+      font-family: "El Messiri", system-ui, sans-serif;
+      color: var(--accent);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .gallery{
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 6px;
+    }
+
+    .gallery::-webkit-scrollbar{ height: 8px; }
+    .gallery::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.10); border-radius: 999px; }
+    .gallery::-webkit-scrollbar-track{ background: rgba(0,0,0,0.10); border-radius: 999px; }
+
+    .gallery-card{
+      flex: 0 0 auto;
+      width: min(78vw, 360px);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      scroll-snap-align: start;
+      background: rgba(0,0,0,0.18);
+    }
+
+    .gallery-card img{
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-cap{
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 18px;
+    }
+
+    @media (min-width: 768px) {
+      body { padding: 32px 16px; }
+      h1 { font-size: 32px; }
+      .section { padding: 20px 22px; }
+      .gallery-card img{ height: 240px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- =========================
+         PAGE HOME
+    ========================== -->
+    <div class="page is-active" id="page-home">
+
+      <header class="header">
+        <div class="logo">
+          <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
+        </div>
+
+        <div class="badge">Restaurant</div>
+        <h1>RESTAURANT ISTANBUL</h1>
+
+        <p class="subtitle">Kebab · Grillades · Burgers · Paninis · Salades</p>
+
+        <p class="welcome-line">
+          Bienvenue au Restaurant Istanbul — votre adresse 100% halal pour déguster kebabs,
+          grillades et spécialités turques préparées avec passion.
+        </p>
+
+        <p class="info">
+          <span class="highlight">Téléphone :</span>
+          <a class="phone-link" href="tel:+33327396449">03 27 39 64 49</a><br />
+          <span class="highlight">Adresse :</span> 16 Place de la Libération, 59330 Hautmont
+        </p>
+
+        <div class="schedule">
+          <p class="schedule-row"><span class="highlight">Lundi → Samedi :</span> 11h–14h · 18h–23h</p>
+          <p class="schedule-row"><span class="highlight">Dimanche :</span> 18h–23h</p>
+        </div>
+
+        <div class="home-actions">
+          <a class="home-btn" href="#menu" data-page="menu">Menu</a>
+          <a class="home-btn" href="#location" data-page="location">Localisation</a>
+          <a class="home-btn" href="#about" data-page="about">À propos</a>
+        </div>
+      </header>
+
+      <!-- Galerie (7 photos) -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Sélection de plats</h2>
+          <p class="section-note">Galerie défilante</p>
+        </div>
+
+        <div class="gallery-wrap">
+          <div class="gallery-title">Galerie</div>
+
+          <!-- Remplace photo1.jpg ... photo7.jpg par tes vrais fichiers -->
+          <div class="gallery" aria-label="Galerie de photos">
+            <div class="gallery-card">
+              <img src="photo1.jpg" alt="Photo 1">
+              <div class="gallery-cap">Photo 1</div>
+            </div>
+            <div class="gallery-card">
+              <img src="photo2.jpg" alt="Photo 2">
+              <div class="gallery-cap">Photo 2</div>
+            </div>
+            <div class="gallery-card">
+              <img src="photo3.jpg" alt="Photo 3">
+              <div class="gallery-cap">Photo 3</div>
+            </div>
+            <div class="gallery-card">
+              <img src="photo4.jpg" alt="Photo 4">
+              <div class="gallery-cap">Photo 4</div>
+            </div>
+            <div class="gallery-card">
+              <img src="photo5.jpg" alt="Photo 5">
+              <div class="gallery-cap">Photo 5</div>
+            </div>
+            <div class="gallery-card">
+              <img src="photo6.jpg" alt="Photo 6">
+              <div class="gallery-cap">Photo 6</div>
+            </div>
+            <div class="gallery-card">
+              <img src="photo7.jpg" alt="Photo 7">
+              <div class="gallery-cap">Photo 7</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">Faites glisser pour parcourir les photos.</div>
+      </section>
+
+      <footer class="footer">Prix TTC — Restaurant Istanbul</footer>
+    </div>
+
+    <!-- =========================
+         PAGE MENU
+    ========================== -->
+    <div class="page" id="page-menu">
+
+      <header class="header">
+        <div class="logo">
+          <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
+        </div>
+
+        <div class="badge">Menu</div>
+        <h1>RESTAURANT ISTANBUL</h1>
+        <p class="subtitle">Kebab · Grillades · Burgers · Paninis · Salades</p>
+
+        <p class="info">
+          <span class="highlight">Téléphone :</span>
+          <a class="phone-link" href="tel:+33327396449">03 27 39 64 49</a><br />
+          <span class="highlight">Adresse :</span> 16 Place de la Libération, 59330 Hautmont
+        </p>
+
+        <div class="schedule">
+          <p class="schedule-row"><span class="highlight">Lundi → Samedi :</span> 11h–14h · 18h–23h</p>
+          <p class="schedule-row"><span class="highlight">Dimanche :</span> 18h–23h</p>
+        </div>
+      </header>
+
+      <!-- Sticky catégories -->
+      <div class="menu-sticky">
+        <div class="menu-cats">
+          <a href="#" data-back="home">Retour à l’accueil</a>
+          <a href="#sandwiches">Sandwiches</a>
+          <a href="#durums">Durums</a>
+          <a href="#assiettes">Assiettes</a>
+          <a href="#burgers">Burgers</a>
+          <a href="#paninis">Paninis</a>
+          <a href="#garnitures">Frites</a>
+          <a href="#salades">Salades</a>
+          <a href="#boissons">Boissons</a>
+        </div>
+        <div class="menu-sticky-hint">Choisissez une catégorie à tout moment</div>
+      </div>
+
+      <!-- SANDWICHES -->
+      <section class="section" id="sandwiches">
+        <div class="section-header">
+          <h2 class="section-title">Sandwiches</h2>
+          <p class="section-note">Prix sans / avec frites</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Kebab</div><div class="item-desc">Kebab de veau-dinde</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Kefta</div><div class="item-desc">3 kefta (viande de veau et agneau hachée, épices)</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Adana</div><div class="item-desc">1 broche d’Adana (veau + agneau hachés épicés)</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Brochette Poulet</div><div class="item-desc">1 brochette de poulet</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Brochette Dinde</div><div class="item-desc">1 brochette de dinde</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Brochette Bœuf</div><div class="item-desc">1 brochette de bœuf</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Brochette Agneau</div><div class="item-desc">1 brochette d’agneau</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Merguez</div><div class="item-desc">2 merguez</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Steak</div><div class="item-desc">1 steak (bœuf, dinde ou poisson au choix)</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Mexicanos</div><div class="item-desc">1 mexicanos</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Cervelas</div><div class="item-desc">1 cervelas chaud</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Fricadelles</div><div class="item-desc">2 fricadelles</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Poulycroc</div><div class="item-desc">1 poulycroc</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Nuggets</div><div class="item-desc">6 nuggets</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Buffalo</div><div class="item-desc">Steak haché de bœuf, cheddar, œuf grillé</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Sandwich Végétarien</div><div class="item-desc">Fromage feta</div></div><div class="item-price">7,00 € / 7,50 €</div></div>
+        </div>
+
+        <p class="sauce-note">
+          Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
+        </p>
+      </section>
+
+      <!-- DURUMS -->
+      <section class="section" id="durums">
+        <div class="section-header">
+          <h2 class="section-title">Durums</h2>
+          <p class="section-note">Prix sans / avec frites</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="item"><div class="item-main"><div class="item-title">Durum Kebab</div><div class="item-desc">Kebab de veau-dinde</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Kefta</div><div class="item-desc">3 kefta (veau, agneau, épices)</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Adana</div><div class="item-desc">1 broche d’Adana (veau + agneau hachés épicés)</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Brochette Poulet</div><div class="item-desc">1 brochette de poulet</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Brochette Dinde</div><div class="item-desc">1 brochette de dinde</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Brochette Bœuf</div><div class="item-desc">1 brochette de bœuf</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Brochette Agneau</div><div class="item-desc">1 brochette d’agneau</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Merguez</div><div class="item-desc">2 merguez</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Steak</div><div class="item-desc">1 steak (bœuf, dinde ou poisson)</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Mexicanos</div><div class="item-desc">1 Mexicanos</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Cervelas</div><div class="item-desc">1 cervelas chaud</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Fricadelles</div><div class="item-desc">2 fricadelles</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Poulycroc</div><div class="item-desc">1 poulycroc</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Nuggets</div><div class="item-desc">6 nuggets</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Durum Végétarien</div><div class="item-desc">Fromage feta</div></div><div class="item-price">7,50 € / 8,00 €</div></div>
+        </div>
+
+        <p class="sauce-note">
+          Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
+        </p>
+      </section>
+
+      <!-- ASSIETTES -->
+      <section class="section" id="assiettes">
+        <div class="section-header">
+          <h2 class="section-title">Assiettes</h2>
+          <p class="section-note">Avec crudités, blé, frites</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Kebab</div><div class="item-desc">Kebab de veau-dinde</div></div><div class="item-price">12,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Kefta</div><div class="item-desc">4 kefta (veau, agneau, épices)</div></div><div class="item-price">13,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Adana</div><div class="item-desc">2 broches d’Adana (veau + agneau hachés épicés)</div></div><div class="item-price">13,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Escalope Poulet</div><div class="item-desc">2 escalopes de poulet</div></div><div class="item-price">14,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Escalope Dinde</div><div class="item-desc">1 escalope de dinde</div></div><div class="item-price">14,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Brochettes Poulet</div><div class="item-desc">2 brochettes de poulet</div></div><div class="item-price">13,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Brochettes Dinde</div><div class="item-desc">2 brochettes de dinde</div></div><div class="item-price">13,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Brochettes Bœuf</div><div class="item-desc">2 brochettes de bœuf</div></div><div class="item-price">15,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Brochettes Agneau</div><div class="item-desc">2 brochettes d’agneau</div></div><div class="item-price">15,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Côtelette d’Agneau</div><div class="item-desc">2 côtelettes d’agneau</div></div><div class="item-price">16,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Côtelette de Veau</div><div class="item-desc">1 côtelette de veau</div></div><div class="item-price">16,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Mixte</div><div class="item-desc">Kebab, brochette de poulet, brochette de dinde, côtelette d’agneau, kefta, merguez</div></div><div class="item-price">18,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Entrecôte</div><div class="item-desc">Entrecôte</div></div><div class="item-price">18,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Steak</div><div class="item-desc">2 steaks (bœuf, dinde ou poisson au choix)</div></div><div class="item-price">12,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Mexicanos</div><div class="item-desc">2 Mexicanos</div></div><div class="item-price">12,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Cervelas</div><div class="item-desc">2 cervelas chauds</div></div><div class="item-price">12,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Fricadelles</div><div class="item-desc">3 fricadelles</div></div><div class="item-price">11,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Poulycroc</div><div class="item-desc">3 poulycroc</div></div><div class="item-price">12,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Nuggets</div><div class="item-desc">8 nuggets</div></div><div class="item-price">11,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Assiette Merguez</div><div class="item-desc">3 merguez</div></div><div class="item-price">12,00 €</div></div>
+        </div>
+
+        <p class="sauce-note">
+          Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
+        </p>
+      </section>
+
+      <!-- BURGERS -->
+      <section class="section" id="burgers">
+        <div class="section-header">
+          <h2 class="section-title">Burgers</h2>
+          <p class="section-note">Prix sans / avec frites</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="item"><div class="item-main"><div class="item-title">Hamburger</div><div class="item-desc">1 steak (bœuf, dinde ou poisson), fromage</div></div><div class="item-price">8,50 € / 9,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Cheese Burger</div><div class="item-desc">1 steak au choix, 2 fromages</div></div><div class="item-price">9,50 € / 10,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Double Hamburger</div><div class="item-desc">2 steaks au choix</div></div><div class="item-price">9,50 € / 10,00 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Double Cheese Burger</div><div class="item-desc">2 steaks au choix, 2 fromages</div></div><div class="item-price">10,50 € / 11,00 €</div></div>
+        </div>
+
+        <p class="sauce-note">
+          Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
+        </p>
+      </section>
+
+      <!-- PANINIS -->
+      <section class="section" id="paninis">
+        <div class="section-header">
+          <h2 class="section-title">Paninis</h2>
+          <p class="section-note">Prix sans / avec frites</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="item"><div class="item-main"><div class="item-title">Panini Kebab</div><div class="item-desc">Kebab de veau-dinde</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Panini Kefta</div><div class="item-desc">2 kefta (veau, agneau, épices)</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Panini Brochette Poulet</div><div class="item-desc">1 brochette de poulet</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Panini Brochette Dinde</div><div class="item-desc">1 brochette de dinde</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Panini Saumon</div><div class="item-desc">Saumon fumé, mozzarella</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Panini Steak</div><div class="item-desc">1 steak (bœuf, dinde ou poisson)</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Panini Istanbul</div><div class="item-desc">Saucisson turc, mozzarella</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Panini Trois Fromages</div><div class="item-desc">Camembert, cheddar, mozzarella</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Panini Chèvre</div><div class="item-desc">Fromage de chèvre</div></div><div class="item-price">8,00 € / 8,50 €</div></div>
+        </div>
+
+        <p class="sauce-note">
+          Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
+        </p>
+      </section>
+
+      <!-- FRITES / KEBAB / BLÉ / TEX-MEX -->
+      <section class="section" id="garnitures">
+        <div class="section-header">
+          <h2 class="section-title">Frites · Kebab · Blé · Tex-Mex</h2>
+        </div>
+
+        <div class="columns-3">
+          <div>
+            <div class="sub-heading">Frites</div>
+            <div class="item"><div class="item-main"><div class="item-title">Petite portion</div></div><div class="item-price">4,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Moyenne portion</div></div><div class="item-price">5,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Grande portion</div></div><div class="item-price">6,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Portion kebab + frites</div></div><div class="item-price">8,00 €</div></div>
+          </div>
+
+          <div>
+            <div class="sub-heading">Kebab seul</div>
+            <div class="item"><div class="item-main"><div class="item-title">Petite portion</div></div><div class="item-price">6,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Moyenne portion</div></div><div class="item-price">8,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Grande portion</div></div><div class="item-price">12,00 €</div></div>
+          </div>
+
+          <div>
+            <div class="sub-heading">Blé</div>
+            <div class="item"><div class="item-main"><div class="item-title">Petite portion</div></div><div class="item-price">5,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Moyenne portion</div></div><div class="item-price">6,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Grande portion</div></div><div class="item-price">7,00 €</div></div>
+          </div>
+
+          <div>
+            <div class="sub-heading">Tex-Mex</div>
+            <div class="item"><div class="item-main"><div class="item-title">Fricadelle (1 pièce)</div></div><div class="item-price">1,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Poulycroc (1 pièce)</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Cervelas chaud (1 pièce)</div></div><div class="item-price">3,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Steak (1 pièce)</div></div><div class="item-price">4,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Mexicanos (1 pièce)</div></div><div class="item-price">3,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Nuggets (6 pièces)</div></div><div class="item-price">4,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Nuggets + frites</div></div><div class="item-price">8,00 €</div></div>
+          </div>
+        </div>
+
+        <p class="sauce-note">
+          Sauces au choix : Pitta (blanche), ketchup, mayonnaise, andalouse, hannibal, samouraï, américaine, cocktail, barbecue, harissa, moutarde.
+        </p>
+      </section>
+
+      <!-- SALADES -->
+      <section class="section" id="salades">
+        <div class="section-header">
+          <h2 class="section-title">Salades</h2>
+        </div>
+
+        <div class="columns-2">
+          <div class="item"><div class="item-main"><div class="item-title">Salade Verte</div><div class="item-desc">Salade verte, tomate, choux rouge, carotte râpée, sauce salade</div></div><div class="item-price">7,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Salade Végétarienne</div><div class="item-desc">Salade verte, tomate, concombre, choux rouge, carotte râpée, des olives, sauce salade</div></div><div class="item-price">8,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Salade Chèvre</div><div class="item-desc">Salade verte, tomate, fromage du chèvre, maïs, sauce salade</div></div><div class="item-price">9 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Salade Norvégienne</div><div class="item-desc">Salade verte, tomate, saumon fumé, crème fraîche, citron, sauce salade</div></div><div class="item-price">9,50 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Salade Italienne</div><div class="item-desc">Salade verte, tomate, anchois, olives, mozzarella, huile d'olive, sauce salade</div></div><div class="item-price">9 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Salade Neptune</div><div class="item-desc">Salade verte, thon, maïs, oignons, sauce salade</div></div><div class="item-price">9 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Salade du Berger Turc</div><div class="item-desc">Tomate, concombre, oignons, poivron vert et rouge, jus du citron, huile d'olive, persil, fromage turque (feta), sauce salade</div></div><div class="item-price">10 €</div></div>
+          <div class="item"><div class="item-main"><div class="item-title">Salade de Pomme de Terre</div><div class="item-desc">Pomme de terre, des œufs, oignons, persil, huile d'olive</div></div><div class="item-price">9 €</div></div>
+        </div>
+      </section>
+
+      <!-- BOISSONS -->
+      <section class="section" id="boissons">
+        <div class="section-header">
+          <h2 class="section-title">Boissons</h2>
+        </div>
+
+        <div class="columns-3">
+
+          <div>
+            <div class="sub-heading">Apéritifs</div>
+            <div class="item"><div class="item-main"><div class="item-title">Martini (blanc ou rouge)</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Champagne (verre)</div></div><div class="item-price">5,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Kir</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Kir Royal</div></div><div class="item-price">5,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Ricard</div></div><div class="item-price">2,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Porto</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Liqueur Banane 2 cl</div></div><div class="item-price">2,50 €</div></div>
+
+            <div class="sub-heading">Spiritueux</div>
+            <div class="item"><div class="item-main"><div class="item-title">Whisky JB 4 cl</div></div><div class="item-price">5,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Whisky Jack Daniels 4 cl</div></div><div class="item-price">6,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vodka 4 cl</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vodka 4 cl + Redbull</div></div><div class="item-price">5,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vodka 4 cl + Orange</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Raki</div></div><div class="item-price">5,00 €</div></div>
+          </div>
+
+          <div>
+            <div class="sub-heading">Bières</div>
+            <div class="item"><div class="item-main"><div class="item-title">Leffe Blonde 25 cl</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Leffe Ruby 25 cl</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Heineken 25 cl</div></div><div class="item-price">2,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">1664 25 cl</div></div><div class="item-price">2,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Kronenbourg 25 cl</div></div><div class="item-price">2,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Desperados 33 cl</div></div><div class="item-price">3,50 €</div></div>
+
+            <div class="sub-heading">Vins</div>
+            <div class="item"><div class="item-main"><div class="item-title">Vin rouge Yakut 75 cl</div></div><div class="item-price">16,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vin rouge Yakut 37,5 cl</div></div><div class="item-price">9,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vin rouge Bordeaux 75 cl</div></div><div class="item-price">16,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vin rouge Bordeaux 37,5 cl</div></div><div class="item-price">9,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vin Mirina 75 cl</div></div><div class="item-price">16,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Senfoni rouge 75 cl</div></div><div class="item-price">16,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Senfoni rouge 37,5 cl</div></div><div class="item-price">9,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Senfoni rosé 37,5 cl</div></div><div class="item-price">9,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vin rosé Lâl 75 cl</div></div><div class="item-price">16,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Vin rosé Lâl 37,5 cl</div></div><div class="item-price">9,00 €</div></div>
+
+            <div class="sub-heading">Champagnes</div>
+            <div class="item"><div class="item-main"><div class="item-title">Champagne 75 cl</div><div class="item-desc">(selon la marque)</div></div><div class="item-price">35 / 45 / 60 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Champagne 37,5 cl</div><div class="item-desc">(selon la marque)</div></div><div class="item-price">18 / 22,5 €</div></div>
+          </div>
+
+          <div>
+            <div class="sub-heading">Sans alcool</div>
+            <div class="item"><div class="item-main"><div class="item-title">Coca-Cola 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Coca Zero 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Coca Cherry 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Fanta Orange 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Fanta Citron 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Oasis Tropical 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Orangina 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Tropico 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Lipton Ice Tea 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Sprite 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Schweppes 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Perrier 33 cl</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Redbull 250 ml</div></div><div class="item-price">3,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Eau 50 cl</div></div><div class="item-price">1,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Ayran 250 ml</div></div><div class="item-price">1,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Fanta Orange 1,25 L</div></div><div class="item-price">4,00 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Coca-Cola 1,25 L</div></div><div class="item-price">4,00 €</div></div>
+
+            <div class="sub-heading">Boissons chaudes</div>
+            <div class="item"><div class="item-main"><div class="item-title">Café</div></div><div class="item-price">1,30 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Café allongé</div></div><div class="item-price">1,50 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Café au lait</div></div><div class="item-price">1,70 €</div></div>
+            <div class="item"><div class="item-main"><div class="item-title">Thé turc</div></div><div class="item-price">1,00 €</div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="back-row">
+        <button class="back-btn" type="button" data-back="home">Retour à l’accueil</button>
+      </div>
+
+      <footer class="footer">Prix TTC — Restaurant Istanbul</footer>
+    </div>
+
+    <!-- =========================
+         PAGE LOCATION
+    ========================== -->
+    <div class="page" id="page-location">
+      <header class="header">
+        <div class="logo">
+          <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
+        </div>
+        <div class="badge">Accès</div>
+        <h1>LOCALISATION</h1>
+        <p class="subtitle">Trouvez-nous facilement</p>
+
+        <p class="info">
+          <span class="highlight">Téléphone :</span>
+          <a class="phone-link" href="tel:+33327396449">03 27 39 64 49</a>
+        </p>
+      </header>
+
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Adresse</h2>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card">
+            <div class="location-title">Restaurant Istanbul</div>
+            <div class="location-text">
+              16 Place de la Libération<br>
+              59330 Hautmont
+            </div>
+
+            <!-- Remplace le lien Google Maps si tu veux -->
+            <a class="btn primary" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Istanbul%2016%20Place%20de%20la%20Lib%C3%A9ration%2059330%20Hautmont">
+              Ouvrir sur Maps
+            </a>
+          </div>
+
+          <div class="location-card">
+            <div class="location-title">Horaires</div>
+            <div class="location-text">
+              Lundi → Samedi : 11h–14h · 18h–23h<br>
+              Dimanche : 18h–23h
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="back-row">
+        <button class="back-btn" type="button" data-back="home">Retour à l’accueil</button>
+      </div>
+
+      <footer class="footer">Restaurant Istanbul — Hautmont</footer>
+    </div>
+
+    <!-- =========================
+         PAGE ABOUT
+    ========================== -->
+    <div class="page" id="page-about">
+      <header class="header">
+        <div class="logo">
+          <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
+        </div>
+        <div class="badge">À propos</div>
+        <h1>À PROPOS</h1>
+        <p class="subtitle">Restaurant Istanbul</p>
+      </header>
+
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Notre histoire</h2>
+        </div>
+
+        <p class="about-text">
+          Fondé en 2013, notre restaurant est une entreprise familiale qui place
+          l’hospitalité et la qualité au cœur de son identité.
+          Ouvert initialement à une adresse voisine sous le même nom,
+          l’établissement a franchi une nouvelle étape en 2017 avec l’acquisition
+          et le déménagement dans son local actuel.
+        </p>
+
+        <p class="about-text" style="margin-top:10px;">
+          Notre principale distinction réside dans notre large sélection de grillades,
+          préparées avec soin à partir de viandes halal de haute qualité importées
+          d’Allemagne. Cette exigence nous permet de garantir à nos clients
+          des saveurs authentiques et une constance irréprochable.
+        </p>
+
+        <p class="about-text" style="margin-top:10px;">
+          Souhaitant également satisfaire les palais les plus exigeants,
+          nous proposons une sélection de vins turcs de marque,
+          notamment <em>Senfoni</em> et <em>Mirina</em>, ainsi que le raki,
+          notre boisson traditionnelle.
+        </p>
+
+        <p class="about-text" style="margin-top:10px;">
+          Nous accueillons avec plaisir les groupes professionnels et les grandes familles,
+          avec possibilité de réservation adaptée à leurs besoins.
+          Bien que nous ne proposions pas de livraison à domicile,
+          nous préparons des commandes à emporter (to go)
+          tous les jours de la semaine, jusqu’à 23h.
+        </p>
+      </section>
+
+      <div class="back-row">
+        <button class="back-btn" type="button" data-back="home">Retour à l’accueil</button>
+      </div>
+
+      <footer class="footer">Merci et à très bientôt</footer>
+    </div>
+
+  </div>
+
+  <script>
+    // Pages
+    const pages = {
+      home: document.getElementById("page-home"),
+      menu: document.getElementById("page-menu"),
+      location: document.getElementById("page-location"),
+      about: document.getElementById("page-about"),
+    };
+
+    function showPage(name){
+      Object.values(pages).forEach(p => p && p.classList.remove("is-active"));
+      if (pages[name]) pages[name].classList.add("is-active");
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+
+    // Home buttons / any element with data-page
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-page]");
+      if (!el) return;
+      e.preventDefault();
+      const page = el.getAttribute("data-page");
+      showPage(page);
+    });
+
+    // Back buttons
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-back]");
+      if (!el) return;
+      e.preventDefault();
+      const page = el.getAttribute("data-back");
+      showPage(page);
+    });
+
+    // Menu anchors: smooth scroll with sticky offset (only on menu page)
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+
+      // Only when menu page active
+      if (!pages.menu.classList.contains("is-active")) return;
+
+      // If it's the "Retour à l’accueil" link (data-back), let the back-handler do its job
+      if (a.closest("[data-back]")) return;
+
+      const id = a.getAttribute("href");
+      const target = document.querySelector(id);
+      if (!target) return;
+
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
