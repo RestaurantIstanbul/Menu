@@ -33,14 +33,19 @@ body {
   padding: 16px;
   overflow-y: auto;
 
-  /* DESEN (fotoAP) + karartma (overlay) */
+  background-color: #1b0003;
+
   background-image:
-    radial-gradient(circle at top, rgba(59,5,9,0.70) 0, rgba(27,0,3,0.88) 55%, rgba(16,0,2,0.94) 100%),
+    radial-gradient(circle at top,
+      rgba(59,5,9,0.70) 0%,
+      rgba(27,0,3,0.88) 55%,
+      rgba(16,0,2,0.94) 100%
+    ),
     url("fotoAP.png");
-  background-repeat: repeat;
-  background-size: 520px auto; /* desen büyüklüğü: istersen 350px/700px dene */
-  background-position: center top;
-  background-attachment: fixed; /* mobilde sorun olursa kaldırabilirsin */
+
+  background-repeat: no-repeat, repeat;
+  background-size: cover, 520px auto;
+  background-position: center top, center;
 }
 
     }
