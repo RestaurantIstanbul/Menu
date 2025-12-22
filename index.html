@@ -543,81 +543,6 @@
     margin-top: 40px;
     padding: 20px 0;
   }
-
-    /* ===== LUXE: "Depuis 2013" shimmer line ===== */
-.since{
-  font-family: "El Messiri", system-ui, sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--muted);
-  opacity: 0.9;
-  margin-top: 6px;
-  margin-bottom: 18px;
-  position: relative;
-  display: inline-block;
-}
-
-.since-line{
-  display: block;
-  height: 2px;
-  width: 180px;
-  margin: 10px auto 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(255,182,42,.85), transparent);
-  position: relative;
-  overflow: hidden;
-}
-
-.since-line::after{
-  content:"";
-  position:absolute;
-  top:-6px; left:-40%;
-  width: 40%;
-  height: 14px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
-  filter: blur(0.5px);
-  animation: shimmer 2.8s ease-in-out infinite;
-}
-
-@keyframes shimmer{
-  0%{ transform: translateX(0); opacity: 0.2; }
-  40%{ opacity: 0.9; }
-  100%{ transform: translateX(320%); opacity: 0.2; }
-}
-
-/* ===== PREMIUM: subtle grill-smoke (no GIF) ===== */
-.header{
-  position: relative; /* smoke için gerekli */
-  overflow: hidden;   /* taşmayı engeller */
-}
-
-.smoke{
-  position:absolute;
-  inset: -30px;
-  pointer-events:none;
-  z-index: 0;
-  opacity: 0.22;
-  background:
-    radial-gradient(ellipse at 20% 60%, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 55%),
-    radial-gradient(ellipse at 60% 50%, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 58%),
-    radial-gradient(ellipse at 85% 70%, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 60%);
-  filter: blur(10px);
-  mix-blend-mode: screen;
-  animation: smokeMove 7.5s ease-in-out infinite;
-}
-
-/* Header içeriği dumanın üstünde kalsın */
-.header > *:not(.smoke){
-  position: relative;
-  z-index: 1;
-}
-
-@keyframes smokeMove{
-  0%   { transform: translate3d(-10px, 6px, 0) scale(1); opacity: 0.18; }
-  50%  { transform: translate3d(12px, -8px, 0) scale(1.03); opacity: 0.26; }
-  100% { transform: translate3d(-10px, 6px, 0) scale(1); opacity: 0.18; }
-}
  
   </style>
 </head>
@@ -633,7 +558,6 @@
     <div class="page is-active" id="page-home">
 
       <header class="header">
-        <div class="smoke" aria-hidden="true"></div>
         <div class="logo">
           <img src="ISTANBUL.png" alt="Restaurant Istanbul - Logo" />
         </div>
@@ -641,7 +565,6 @@
         <h1>RESTAURANT ISTANBUL</h1>
 <div class="since">
   DEPUIS 2013
-  <span class="since-line" aria-hidden="true"></span>
 </div>
 
 
